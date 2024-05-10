@@ -1,0 +1,55 @@
+public class calculator_1 {
+
+    public double X {get; set;} 
+    public double Y {get; set;} 
+    public double result{get; set;}
+    
+    
+    public void add(){
+        result = X + Y;
+        
+    }
+    public void subtract(){
+        result = X - Y;
+
+    }
+    public void multiply(){
+        result = X * Y;
+
+    }
+    public void divide(){
+        if(Y == 0){
+            result = null;
+        }
+        else{
+            result = X / Y;
+        }
+        
+    }
+    public void clear(){
+        X = null;
+        Y = null;
+        result = null;
+	 }
+    	
+}
+
+
+<apex:page controller="calculator_1">
+    <apex:form >
+        <apex:pageBlock title="My Calculator">
+            <apex:pageBlockSection >
+                Operand 1: <apex:inputText value="{!X}"/><br/>
+                Operand 2: <apex:inputText value="{!Y}"/><br/>
+                Result: <apex:outputText value="{!result}"/><br/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Add" action="{!add}"/>
+                <apex:commandButton value="Subtract" action="{!subtract}"/>
+                <apex:commandButton value="Multiply" action="{!multiply}"/>
+                <apex:commandButton value="Divide" action="{!divide}"/>
+                <apex:commandButton value="Clear" action="{!clear}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

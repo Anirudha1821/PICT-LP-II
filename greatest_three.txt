@@ -1,0 +1,42 @@
+public class greatest_3 {
+	public Integer xvalue {get;set;}
+    public Integer yvalue {get;set;}
+    public Integer zvalue {get;set;}
+    public Integer result {get;set;}
+    
+    public pagereference greatest() {
+        
+        result = xvalue;
+        
+        if(yvalue > result){
+            result = yvalue;
+        }
+        if(zvalue > result){
+            result = zvalue;
+        }
+        return null;
+    }
+}
+
+
+<apex:page controller="greatest_3" >
+    <apex:form >
+        <apex:pageBlock title="Greatest Of 3">
+            <apex:pageBlockSection title="Enter three numbers" >
+                Enter X value:
+                <apex:inputText value="{!xvalue}"/>
+                
+                Enter Y value :
+                <apex:inputText value="{!yvalue}"/>
+                
+                Enter Z value :
+                <apex:inputText value="{!zvalue}"/>
+                
+                Result:
+                <apex:outputText value="{!result}"/>
+                
+                <apex:commandButton value="find" action="{!greatest}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>  
+</apex:page>

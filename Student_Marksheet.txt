@@ -1,0 +1,75 @@
+public class student_marksheet {
+    
+    public Integer englishMarks { get; set; }
+    public Integer mathsMarks { get; set; }
+    public Integer scienceMarks { get; set; }
+    public Integer socialScienceMarks { get; set; }
+    public Integer computersMarks { get; set; }
+    
+    public String englishGrade { get; set; }
+    public String mathsGrade { get; set; }
+    public String scienceGrade { get; set; }
+    public String socialScienceGrade { get; set; }
+    public String computersGrade { get; set; }
+    
+    public Decimal averageGrade{get; set;}
+    
+    private String getGrade(Decimal marks) {
+        if (marks >= 90) {
+            return 'O';
+        } else if (marks >= 80) {
+            return 'A';
+        } else if (marks >= 70) {
+            return 'B';
+        } else if (marks >= 60) {
+            return 'C';
+        } else if (marks >= 50) {
+            return 'D';
+        } else {
+            return 'Fail';
+        }
+    }
+
+    public void calculateGrades() {
+        englishGrade = getGrade(englishMarks);
+        mathsGrade = getGrade(mathsMarks);
+        scienceGrade = getGrade(scienceMarks);
+        socialScienceGrade = getGrade(socialScienceMarks);
+        computersGrade = getGrade(computersMarks);
+        
+        if (englishGrade=='Fail' || mathsGrade=='Fail' || scienceGrade=='Fail' || socialScienceGrade=='Fail' || computersGrade=='Fail'){
+            averageGrade = 0.0;
+        }
+        else{
+        	averageGrade = (englishMarks + mathsMarks + scienceMarks + socialScienceMarks + computersMarks) / 50.0;
+        }
+    }
+    
+}
+
+
+<apex:page controller="student_marksheet">
+    <apex:form >
+    	<apex:pageBlock title="Student Marksheet">
+        <apex:pageBlockSection title="Enter Marks">
+            <apex:inputText label="English Marks" value="{!englishMarks}" />
+            <apex:inputText label="Maths Marks" value="{!mathsMarks}" />
+            <apex:inputText label="Science Marks" value="{!scienceMarks}" />
+            <apex:inputText label="Social Science Marks" value="{!socialScienceMarks}" />
+            <apex:inputText label="Computers Marks" value="{!computersMarks}" />
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Grades">
+            <apex:outputText label="English Grade" value="{!englishGrade}" />
+            <apex:outputText label="Maths Grade" value="{!mathsGrade}" />
+            <apex:outputText label="Science Grade" value="{!scienceGrade}" />
+            <apex:outputText label="Social Science Grade" value="{!socialScienceGrade}" />
+            <apex:outputText label="Computers Grade" value="{!computersGrade}" />
+            <apex:outputText label="SGPA" value="{!averageGrade}" />
+            
+        </apex:pageBlockSection>
+        
+            <apex:commandButton action="{!calculateGrades}" value="Calculate Grades"/>
+        
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
