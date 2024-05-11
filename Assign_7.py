@@ -45,3 +45,4 @@ def simple_chatbot():
 
 if __name__ == "__main__":
     simple_chatbot()
+# https://chatgpt.com/c/ad4ed8d9-ae7a-4e2e-9bba-a9863ba272d1
