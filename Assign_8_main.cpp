@@ -111,3 +111,5 @@ int main()
 
     return 0;
 }
+
+//An expert system in AI is a computer system designed to emulate the decision-making ability of a human expert in a specific domain. It relies on a knowledge base, which contains facts, rules, and heuristics about a particular subject, along with an inference engine that applies logical reasoning to draw conclusions or make recommendations based on the provided knowledge.

@@ -1,6 +1,7 @@
 import nltk
 from nltk.chat.util import Chat, reflections
-
+# Chat class is used to create the chatbot, 
+# and reflections is a predefined dictionary in NLTK used for pronoun substitutions.
 pairs = [
     [
         r"hi|hello|hey",
@@ -36,9 +37,9 @@ pairs = [
     ]
 ]
 
-# Create ChatBot
 def simple_chatbot():
     print("Welcome to Simple ChatBot!")
+    # Create a Chat instance with defined pairs and reflections
     chatbot = Chat(pairs, reflections)
     chatbot.converse()
 

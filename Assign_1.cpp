@@ -34,6 +34,26 @@ public:
         cout << endl;
     }
 
+    // Updated DFSUtil function to calculate the level of each node
+    void DFS_Level_Util(int v, vector<bool>& visited, vector<int>& level, int currentLevel) {
+        visited[v] = true;
+        level[v] = currentLevel; // Set the level of the current node
+
+        for (int i : adj[v]) {
+            if (!visited[i]) {
+                DFS_Level_Util(i, visited, level, currentLevel + 1); // Increment level for adjacent nodes
+            }
+        }
+    }
+
+    int DFS_for_level(int v, int x) {
+        vector<bool> visited(V, false);
+        vector<int> level(V, -1); // Initialize levels to -1 initially
+        DFS_Level_Util(v, visited, level, 0); // Start DFS traversal from node 'v' with level 0
+        return level[x];
+    }
+
+
     void BFS(int v) {
         vector<bool> visited(V, false);
         queue<int> q;
@@ -74,12 +94,13 @@ public:
                 if (!visited[i]) {
                     visited[i] = true;
                     //level of adj node  = level of node + 1
-                    level[i] = level[node] + 1; // Increment level from the current node
+                    level[i] = level[node] + 1; // just this extra line is added
                     q.push(i);
                 }
             }
         }
 
+        //return the level of node = x
         if (X >= 0 && X < V)
             return (visited[X]) ? level[X] : -1;
         else 
